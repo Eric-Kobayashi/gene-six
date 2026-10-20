@@ -102,7 +102,7 @@ async function handleKey(value) {
     guesses.push(guess); typed = '';
   } else if (/^[A-Z0-9 ]$/.test(value) && typed.length < SLOTS) typed += value;
   else return;
-  say(`${guesses.length} of 6 guesses used. Letters, digits, and blanks all count.`);
+  say('');
   save(); render();
 }
 document.addEventListener('keydown', e => {
