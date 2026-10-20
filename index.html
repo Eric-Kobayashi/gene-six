@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f5ed">
+<meta name="description" content="A daily human gene puzzle. Six slots, six guesses. Letters, numbers, and blanks all count.">
+<title>Gene Six — A daily human gene puzzle</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<div class="shell">
+<header><a class="brand" href="./" aria-label="Gene Six home"><span class="brand-mark" aria-hidden="true">G<span>6</span></span><span>GENE SIX<small>A LITTLE DAILY DISCOVERY</small></span></a><button id="help" class="icon-button" aria-label="How to play">?</button></header>
+<main>
+<div class="intro"><div class="eyebrow"><span class="live-dot"></span> THE DAILY GENE PUZZLE</div><h1>Small sequence.<br><em>Big discovery.</em></h1><p>One human gene. Six slots. Six guesses.</p></div>
+<div class="game-bar"><div class="modes" aria-label="Game mode"><button id="daily" aria-pressed="true">Daily</button><button id="practice" aria-pressed="false">Practice</button></div><span id="puzzle-label">Loading genes…</span></div>
+<section class="game" aria-label="Gene guessing game">
+<div id="board" aria-label="Six guesses of six characters"></div>
+<div class="legend"><span><i class="correct"></i>Right spot</span><span><i class="present"></i>Wrong spot</span><span><i class="absent"></i>Not present</span></div>
+<p id="message" role="status" aria-live="polite">Loading the gene library…</p>
+<div id="result" hidden><h2 id="result-title"></h2><a id="gene-link" target="_blank" rel="noopener"></a><p id="gene-name"></p><div class="result-actions"><button id="share" class="primary">Share result</button><button id="next" class="secondary">Play another</button></div></div>
+<div id="keyboard" aria-label="On-screen keyboard"></div>
+<p class="blank-note"><span>□</span> Blanks count as characters. <kbd>Space</kbd> adds one.<br>Enter fills any remaining slots with blanks.</p>
+</section>
+<details class="library"><summary>Need a starting point? <span>Explore the gene library ↗</span></summary><label for="gene-search">Find an approved symbol (up to 6 characters)</label><input id="gene-search" type="search" placeholder="Try BRCA, TP53, or kinase" maxlength="60" autocomplete="off"><p id="library-count"></p><ul id="gene-list"></ul></details>
+</main>
+<footer><span>Built for curious minds.</span><span>Human gene symbols from <a href="https://www.genenames.org/" target="_blank" rel="noopener">HGNC ↗</a></span></footer>
+</div>
+<dialog id="help-dialog"><button class="close icon-button" aria-label="Close instructions">×</button><div class="eyebrow">A QUICK FIELD GUIDE</div><h2>Find the hidden gene.</h2><p>Guess an approved human gene symbol in six tries. The board has six character slots. Use letters, digits, and blanks.</p><p>Short symbols are padded with blanks on the right: <strong>TP53□□</strong>. Press <strong>Space</strong> or <strong>Blank</strong> to add a blank. Enter automatically fills unused slots.</p><div class="example" aria-label="Example: BRCA1 followed by one blank"><span class="correct">B</span><span>R</span><span class="present">C</span><span>A</span><span>1</span><span class="correct">□</span></div><p><strong>Green:</strong> correct character and position.<br><strong>Gold:</strong> correct character, different position.<br><strong>Gray:</strong> no remaining match. Repeated characters, including blanks, are counted individually.</p><p>Only approved symbols of 1–6 letters or digits are accepted. Blanks go after the symbol. The daily puzzle is the same for everyone and changes at midnight UTC. Practice has unlimited puzzles.</p><button class="primary close">Let’s discover</button></dialog>
+</body></html>
