@@ -8,6 +8,21 @@ Six character slots, six guesses. Approved HGNC symbols of 1–6 letters or digi
 
 Serve this directory with `python3 -m http.server 8000`, then open http://localhost:8000. No build step, dependencies, API keys, backend, analytics, or external runtime assets. Node.js 20+ can run `npm test`.
 
+## Docker
+
+Build and run from this directory with Docker running:
+
+```sh
+docker build --pull -t gene-six .
+docker run --rm -p 127.0.0.1:8080:8080 --name gene-six gene-six
+```
+
+Open http://localhost:8080. Stop with Ctrl+C (or `docker stop gene-six` from another terminal).
+
+The image serves the bundled static app with non-root NGINX on port 8080 and includes an HTTP health check. No Node.js runtime, API keys, or backend are required. Only the app assets enter the build context. Progress remains in each browser's local storage, so container storage volumes are unnecessary.
+
+When deploying to a remote host, serve the app over HTTPS: the browser's daily-answer hashing requires a secure context. HTTP on localhost is supported for local use.
+
 ## Daily puzzle
 
 The answer is computed entirely in the browser: SHA-256 of `gene-six:v1:fern-helix-47:YYYY-MM-DD` (UTC), first four bytes as an unsigned big-endian integer, modulo the curated answer-list length. This is deterministic, not cryptographic secrecy: source and bundled data are inspectable. Keep the seed and answer list stable to preserve the daily schedule. Daily progress is saved locally by UTC date. Practice uses browser cryptographic randomness.

@@ -1,0 +1,10 @@
+# Only send the static application assets to the Docker build.
+**
+!Dockerfile
+!.dockerignore
+!index.html
+!style.css
+!app.js
+!game.js
+!genes.json
+!favicon.svg
